@@ -38,6 +38,14 @@ class Category extends Crud {
 		$stmt->bindParam(':descricao', $this->descricao);
 		return $stmt->execute(); 
 	}
+
+	public function find( $id ) {
+		$sql  = "SELECT * FROM $this->table WHERE id = :id";
+		$stmt = DB::prepare( $sql );
+		$stmt->bindParam( ':id', $id, PDO::PARAM_INT );
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 	
 	public function update($id){
 		$sql  = "UPDATE $this->table SET nome = :nome, descricao = :descricao WHERE id = :id";
