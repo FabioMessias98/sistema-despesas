@@ -1,0 +1,23 @@
+[
+      {
+            "valor": "100.00",
+            "data_compra": "2023-01-23 00:00:00",
+            "descricao": "Lorem ipsum...",
+            "tipo_pagamento_id": 1,
+            "categoria_id": 1
+      },
+      {
+            "valor": "250.00",
+            "data_compra": "2023-02-23 00:00:00",
+            "descricao": "Lorem ipsum...",
+            "tipo_pagamento_id": 2,
+            "categoria_id": 2
+      },
+      {
+            "valor": "300.00",
+            "data_compra": "2023-03-23 00:00:00",
+            "descricao": "Lorem ipsum...",
+            "tipo_pagamento_id": 3,
+            "categoria_id": 3
+      }
+]
