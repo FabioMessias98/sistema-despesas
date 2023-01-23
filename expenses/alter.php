@@ -13,11 +13,6 @@
         $id = $_GET['id'];
         $expenses = new Expense();  
         $expense = $expenses->find( $id );
-        echo "<pre>";
-        var_dump($expense);
-        echo "</pre>";
-    } else {
-        echo 'Error!';
     }
 ?>
 
@@ -40,7 +35,7 @@
             <label style="margin-bottom:.5rem;display:flex;flex-direction:column" for="descricao">
                 Descrição:
 
-                <textarea name="descricao" id="descricao" cols="30" rows="10"><?php echo $expense[0]->descricao; ?></textarea>
+                <textarea name="descricao" id="descricao" cols="30" rows="10"><?php echo $expense[0]->descricao_despesa; ?></textarea>
             </label>
 
             <label style="margin-bottom:.5rem;display:flex;flex-direction:column" for="tipo_pagamento">
