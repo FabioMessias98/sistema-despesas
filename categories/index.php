@@ -39,11 +39,11 @@
             <?php echo $category->nome; ?>
         </p>
 
-        <a href="#">
+        <a href="alter.php/?id=<?php echo $category->id; ?>">
             Editar
         </a>
 
-        <a href="#">
+        <a href="delete.php/?id=<?php echo $category->id; ?>">
             Deletar
         </a>
     </div>
