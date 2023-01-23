@@ -1,8 +1,11 @@
-<?php include( '../includes/header.php' ); ?>
+<?php
+    include( '../includes/header.php' );
+    include( '../TypesPayment.php' ); 
+?>
 
 <?php 
-    $title_single = 'Pagamento'; 
-    $title_plural = 'Pagamentos';
+    $title_single = 'Tipo de pagamento'; 
+    $title_plural = 'Tipos de pagamentos';
 ?>
 
 <h2>
@@ -22,21 +25,29 @@
 </h2>
 
 <!-- loop -->
-<?php for( $i = 0; $i < 10; $i++ ) { ?>
+<?php 
+    $types_payment = new TypesPayment();
+
+    foreach( $types_payment->findAll() as $type_payment ) : 
+?>
     <div style="margin-bottom:.1rem;display:flex;justify-content:space-between">
         <p>
-            <?php echo $title_single . ' ' . $i; ?>
+            <?php echo $type_payment->id; ?>
+        </p>
+        
+        <p>
+            <?php echo $type_payment->tipo; ?>
         </p>
 
-        <a href="#">
+        <a href="alter.php/?id=<?php echo $type_payment->id; ?>">
             Editar
         </a>
 
-        <a href="#">
+        <a href="delete.php/?id=<?php echo $type_payment->id; ?>">
             Deletar
         </a>
     </div>
-<?php } ?>
+<?php endforeach; ?>
 <!-- end loop -->
 
 <?php include( '../includes/footer.php' ); ?>
