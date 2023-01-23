@@ -1,11 +1,22 @@
 <?php 
+    session_start();
+    $status = $_SESSION[ 'status' ];
+
     include( '../includes/header.php' ); 
     include( '../Expense.php' );  
     include( '../TypesPayment.php' );
     include( '../Category.php' );
-
+    
     $api_expenses = file_get_contents( '../api/expenses.json', true);
     $data = json_decode( $api_expenses );
+
+    if( !$status ) {
+        
+        $expenses = new Expense( $data );
+        echo 'Teste';
+        $expenses->create_api();
+        $_SESSION[ 'status' ] = true;
+    }
 ?>
 
 <div>
@@ -53,13 +64,22 @@
                 <select name="categoria" id="categoria">
                     <option >Selecionar</option>
 
-                    <option value="<?php echo $category->id; ?>"><?php echo $category->nome; ?></option>
+                    <?php foreach( $categories->findAll() as $category ) : ?>
+                        <option value="<?php echo $category->id; ?>"><?php echo $category->nome; ?></option>
+                    <?php endforeach; ?>
                 </select>
             </label>
 
             <input type="submit" value="Salvar">
         </div>
     </form>
+
+    <?php 
+        if( isset( $_POST['valor'] ) && isset( $_POST['data_compra'] ) && isset( $_POST['descricao'] ) && isset( $_POST['tipo_pagamento'] ) && isset( $_POST['categoria'] ) ) {
+            $expenses = new Expense( $_POST['valor'], $_POST['data_compra'], $_POST['descricao'], $_POST['tipo_pagamento'], $_POST['categoria'] );
+            $expenses->create();
+        }
+    ?>
 </div>
 
 <div style="height:200px"></div>
@@ -107,9 +127,9 @@
 
     <!-- loop -->
     <?php 
-        $expenses = new Expense( $data );
+        $expenses = new Expense();
                         
-        foreach( $expenses->store() as $expense ) :               
+        foreach( $expenses->store() as $expense ) :              
     ?>
         <div style="width:100%;display:flex;flex-wrap:wrap">
 
@@ -139,7 +159,7 @@
 
             <div style="width:14%">
                 <p style="text-align:center">
-                    <?php echo $expense->categoria_id; ?>
+                    <?php echo $expense->nome; ?>
                 </p>
             </div>
 
