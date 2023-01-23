@@ -1,5 +1,5 @@
 <?php include( 'includes/header.php' ); ?>
-        <h1>Tela inicial</h1>
+        <h1>Tela inicial - home</h1>
 
         <!--
             $content = file_get_contents( 'api.json', true);
