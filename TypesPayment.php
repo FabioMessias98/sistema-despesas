@@ -29,11 +29,19 @@
 
 			return $stmt->execute(); 
 		}
+
+		public function find( $id ) {
+			$sql  = "SELECT * FROM $this->table WHERE id = :id";
+			$stmt = DB::prepare( $sql );
+			$stmt->bindParam( ':id', $id, PDO::PARAM_INT );
+			$stmt->execute();
+			return $stmt->fetchAll();
+		}
 		
 		public function update($id){
 			$sql  = "UPDATE $this->table SET tipo = :tipo WHERE id = :id";
 			$stmt = DB::prepare($sql);
-			$stmt->bindParam(':tipo', $this->nome);
+			$stmt->bindParam(':tipo', $this->tipo);
 			$stmt->bindParam(':id', $id);
 			return $stmt->execute();	
 		}
