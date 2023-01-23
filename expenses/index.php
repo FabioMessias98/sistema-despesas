@@ -18,6 +18,10 @@
     }
 ?>
 
+<h1>
+    Despesas - <?php echo date( 'M' ); ?>
+</h1>
+
 <div>
     <form
     method="POST"
@@ -134,57 +138,61 @@
     <?php 
         $expenses = new Expense();
                         
-        foreach( $expenses->store() as $expense ) :            
+        foreach( $expenses->store() as $expense ) :
+            list($data_day, $data_month, $data_year) = explode('-', $expense->data_compra);    
+            if( $data_month == date( 'm' ) ) :         
     ?>
-        <div style="width:100%;display:flex;flex-wrap:wrap">
+                <div style="width:100%;display:flex;flex-wrap:wrap">
 
-            <div style="width:14%">
-                <p style="text-align:center">
-                    <?php echo $expense->valor; ?>
-                </p>
-            </div>
+                    <div style="width:14%">
+                        <p style="text-align:center">
+                            <?php echo $expense->valor; ?>
+                        </p>
+                    </div>
 
-            <div style="width:14%">
-                <p style="text-align:center">
-                    <?php echo $expense->data_compra; ?>
-                </p>
-            </div>
+                    <div style="width:14%">
+                        <p style="text-align:center">
+                            <?php echo $expense->data_compra; ?>
+                        </p>
+                    </div>
 
-            <div style="width:14%">
-                <p style="text-align:center">
-                    <?php echo $expense->descricao; ?>
-                </p>
-            </div>
+                    <div style="width:14%">
+                        <p style="text-align:center">
+                            <?php echo $expense->descricao_despesa; ?>
+                        </p>
+                    </div>
 
-            <div style="width:14%">
-                <p style="text-align:center">
-                    <?php echo $expense->tipo; ?>
-                </p>
-            </div>
+                    <div style="width:14%">
+                        <p style="text-align:center">
+                            <?php echo $expense->tipo; ?>
+                        </p>
+                    </div>
 
-            <div style="width:14%">
-                <p style="text-align:center">
-                    <?php echo $expense->nome; ?>
-                </p>
-            </div>
+                    <div style="width:14%">
+                        <p style="text-align:center">
+                            <?php echo $expense->nome; ?>
+                        </p>
+                    </div>
 
-            <div style="width:14%">
-                <a 
-                style="display:block;text-align:center"
-                href="alter.php/?id=<?php echo $expense->id; ?>">
-                    Editar
-                </a>
-            </div>
+                    <div style="width:14%">
+                        <a 
+                        style="display:block;text-align:center"
+                        href="alter.php/?id=<?php echo $expense->id_despesa; ?>">
+                            Editar
+                        </a>
+                    </div>
 
-            <div style="width:14%">
-                <a 
-                style="display:block;text-align:center"
-                href="#">
-                    Excluir
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
+                    <div style="width:14%">
+                        <a 
+                        style="display:block;text-align:center"
+                        href="delete.php/?id=<?php echo $expense->id_despesa; ?>">
+                            Excluir
+                        </a>
+                    </div>
+                </div>
+    <?php   endif;  
+        endforeach; 
+    ?>
     <!-- end loop -->
 </div>
 
