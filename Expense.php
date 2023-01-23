@@ -80,7 +80,7 @@ class Expense extends Crud {
 	public function find( $id ) {
 		// $sql  = "SELECT * FROM $this->table WHERE id = :id";
 		// $sql = "SELECT * FROM despesas AS despesa INNER JOIN tipo_pagamento AS tipo ON despesa.tipo_pagamento_id = tipo.id INNER JOIN categorias AS categoria ON despensa.categoria_id = categoria.id";
-		$sql = "SELECT * FROM despesas AS despesa, descricao AS descricao_despensa JOIN tipo_pagamento AS tipo JOIN categorias AS categoria WHERE despesa.id = :id AND despesa.tipo_pagamento_id = tipo.id AND despesa.categoria_id = categoria.id";
+		$sql = "SELECT valor, data_compra, despesa.descricao AS descricao_despesa, tipo_pagamento_id, categoria_id, tipo.tipo, categoria.nome FROM despesas AS despesa JOIN tipo_pagamento AS tipo JOIN categorias AS categoria WHERE despesa.id = :id AND despesa.tipo_pagamento_id = tipo.id AND despesa.categoria_id = categoria.id";
 		$stmt = DB::prepare( $sql );
 		$stmt->bindParam( ':id', $id, PDO::PARAM_INT );
 		$stmt->execute();
