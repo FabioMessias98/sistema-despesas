@@ -16,7 +16,8 @@
     }
 ?>
 
-<form
+<?php if( $expense ) : ?>
+    <form
     method="POST"
     action="">
         <div style="display:flex;flex-direction:column">
@@ -44,7 +45,7 @@
                 <?php $types_payment = new TypesPayment(); ?>
 
                 <select name="tipo_pagamento" id="tipo_pagamento">
-                    <option><?php echo $expense[0]->tipo; ?></option>
+                    <option value="<?php echo $expense[0]->id_tipo; ?>"><?php echo $expense[0]->tipo; ?></option>
 
                     <?php foreach( $types_payment->findAll() as $type_payment ) : ?>
                         <option value="<?php echo $type_payment->id; ?>"><?php echo $type_payment->tipo; ?></option>  
@@ -58,7 +59,7 @@
                 <?php $categories = new Category(); ?>
                 
                 <select name="categoria" id="categoria">
-                    <option><?php echo $expense[0]->nome; ?></option>
+                    <option value="<?php echo $expense[0]->id_categoria; ?>"><?php echo $expense[0]->nome; ?></option>
 
                     <?php foreach( $categories->findAll() as $category ) : ?>
                         <option value="<?php echo $category->id; ?>"><?php echo $category->nome; ?></option>
@@ -69,3 +70,20 @@
             <input type="submit" value="Salvar">
         </div>
     </form>
+<?php else : ?>
+    <p>
+        Nenhuma despesa encontrada!
+    </p>
+<?php endif; ?>
+
+<?php
+    if( isset( $_POST['valor'] ) && isset( $_POST['data_compra'] ) && isset( $_POST['descricao'] ) && isset( $_POST['tipo_pagamento'] ) && isset( $_POST['categoria'] ) ) {
+        $expenses->setValor( $_POST['valor'] );
+        $expenses->setDataCompra( $_POST['data_compra'] );
+        $expenses->setDescricao( $_POST['descricao'] );
+        $expenses->setTipoPagamentoId( $_POST['tipo_pagamento'] );
+        $expenses->setCategoriaId( $_POST['categoria'] );
+        $expenses->update($expense[0]->id_despesa); 
+        header( 'Location: ../index.php' );
+    }
+?>
