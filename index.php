@@ -52,7 +52,6 @@
             }
         ?>
         
-        
         <a
         style="margin-bottom:1rem;display:block"
         href="expenses">
