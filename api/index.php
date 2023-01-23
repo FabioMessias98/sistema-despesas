@@ -3,6 +3,7 @@
     $status = $_SESSION[ 'status' ];
 
     include( '../includes/header.php' ); 
+    include( '../ApiExpense.php' );
     include( '../Expense.php' );  
     include( '../TypesPayment.php' );
     include( '../Category.php' );
@@ -11,10 +12,8 @@
     $data = json_decode( $api_expenses );
 
     if( !$status ) {
-        
-        $expenses = new Expense( $data );
-        echo 'Teste';
-        $expenses->create_api();
+        $expenses_api = new ApiExpense( $data );
+        $expenses_api->create();
         $_SESSION[ 'status' ] = true;
     }
 ?>
@@ -76,7 +75,13 @@
 
     <?php 
         if( isset( $_POST['valor'] ) && isset( $_POST['data_compra'] ) && isset( $_POST['descricao'] ) && isset( $_POST['tipo_pagamento'] ) && isset( $_POST['categoria'] ) ) {
-            $expenses = new Expense( $_POST['valor'], $_POST['data_compra'], $_POST['descricao'], $_POST['tipo_pagamento'], $_POST['categoria'] );
+            // $expenses = new Expense( $_POST['valor'], $_POST['data_compra'], $_POST['descricao'], $_POST['tipo_pagamento'], $_POST['categoria'] );
+            $expenses = new Expense();
+            $expenses->setValor( $_POST['valor'] );
+            $expenses->setDataCompra( $_POST['data_compra'] );
+            $expenses->setDescricao( $_POST['descricao'] );
+            $expenses->setTipoPagamentoId( $_POST['tipo_pagamento'] );
+            $expenses->setCategoriaId( $_POST['categoria'] );
             $expenses->create();
         }
     ?>
@@ -166,7 +171,7 @@
             <div style="width:14%">
                 <a 
                 style="display:block;text-align:center"
-                href="#">
+                href="/edit.php">
                     Editar
                 </a>
             </div>
