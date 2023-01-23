@@ -57,8 +57,6 @@ class Expense extends Crud {
 		$this->categoria_id = $categoria_id;
 	}
 
-	public function update( $id ) { return true; }
-
 	public function create() {
 		$sql  = "INSERT INTO $this->table (valor, data_compra, descricao, tipo_pagamento_id, categoria_id) VALUES (:valor, :data_compra, :descricao, :tipo_pagamento_id, :categoria_id)";
 		$stmt = DB::prepare( $sql );
@@ -71,7 +69,7 @@ class Expense extends Crud {
 	}
 
 	public function store() {
-		$sql = "SELECT * FROM despesas AS despesa JOIN tipo_pagamento AS tipo JOIN categorias AS categoria WHERE despesa.tipo_pagamento_id = tipo.id AND despesa.categoria_id = categoria.id";
+		$sql = "SELECT despesa.id AS id_despesa, valor, data_compra, despesa.descricao AS descricao_despesa, tipo_pagamento_id, categoria_id, tipo.tipo, categoria.nome FROM despesas AS despesa JOIN tipo_pagamento AS tipo JOIN categorias AS categoria WHERE despesa.tipo_pagamento_id = tipo.id AND despesa.categoria_id = categoria.id";
 		$stmt = DB::prepare( $sql );
 		$stmt->execute();
 		return $stmt->fetchAll();
@@ -80,21 +78,24 @@ class Expense extends Crud {
 	public function find( $id ) {
 		// $sql  = "SELECT * FROM $this->table WHERE id = :id";
 		// $sql = "SELECT * FROM despesas AS despesa INNER JOIN tipo_pagamento AS tipo ON despesa.tipo_pagamento_id = tipo.id INNER JOIN categorias AS categoria ON despensa.categoria_id = categoria.id";
-		$sql = "SELECT valor, data_compra, despesa.descricao AS descricao_despesa, tipo_pagamento_id, categoria_id, tipo.tipo, categoria.nome FROM despesas AS despesa JOIN tipo_pagamento AS tipo JOIN categorias AS categoria WHERE despesa.id = :id AND despesa.tipo_pagamento_id = tipo.id AND despesa.categoria_id = categoria.id";
+		$sql = "SELECT despesa.id AS id_despesa, valor, data_compra, despesa.descricao AS descricao_despesa, tipo_pagamento_id, categoria_id, tipo.id AS id_tipo, tipo.tipo, categoria.id AS id_categoria, categoria.nome FROM despesas AS despesa JOIN tipo_pagamento AS tipo JOIN categorias AS categoria WHERE despesa.id = :id AND despesa.tipo_pagamento_id = tipo.id AND despesa.categoria_id = categoria.id";
 		$stmt = DB::prepare( $sql );
 		$stmt->bindParam( ':id', $id, PDO::PARAM_INT );
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
 	
-	// public function update($id) {
-	// 	$sql  = "UPDATE $this->table SET nome = :nome, descricao = :descricao WHERE id = :id";
-	// 	$stmt = DB::prepare( $sql );
-	// 	$stmt->bindParam( ':nome', $this->nome );
-	// 	$stmt->bindParam( ':descricao', $this->descricao );
-	// 	$stmt->bindParam( ':id', $id );
-	// 	return $stmt->execute();	
-	// }
+	public function update($id) {
+		$sql  = "UPDATE $this->table SET valor = :valor, data_compra = :data_compra, descricao = :descricao, tipo_pagamento_id = :tipo_pagamento_id, categoria_id = :categoria_id WHERE id = :id";
+		$stmt = DB::prepare( $sql );
+		$stmt->bindParam( ':valor', $this->valor );
+		$stmt->bindParam( ':data_compra', $this->data_compra );
+		$stmt->bindParam( ':descricao', $this->descricao );
+		$stmt->bindParam( ':tipo_pagamento_id', $this->tipo_pagamento_id );
+		$stmt->bindParam( ':categoria_id', $this->categoria_id );
+		$stmt->bindParam( ':id', $id );
+		return $stmt->execute();	
+	}
 
 	// public function recover(){
 	//     $sql  = "Select * from $this->table where email =:email AND senha = :senha";
