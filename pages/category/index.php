@@ -94,7 +94,7 @@
                                 <div>
                                     <a 
                                     class="l-expense__box__action l-expense__box__action--edit u-font-weight-bold text-center mb-0 py-2"
-                                    href="alter.php/?id=<?php echo $category->id; ?>">
+                                    href="alter.php?id=<?php echo $category->id; ?>">
                                         Editar
                                     </a>
                                 </div>
