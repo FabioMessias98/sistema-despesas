@@ -63,7 +63,7 @@
                             <div class="col-4 mt-4">
                                 <a
                                 class="c-button-submit text-center text-decoration-none py-2"
-                                href="../index.php">
+                                href="./index.php">
                                     Voltar
                                 </a>
                             </div>
