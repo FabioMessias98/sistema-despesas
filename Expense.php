@@ -9,14 +9,6 @@ class Expense extends Crud {
 	public $tipo_pagamento_id;
 	public $categoria_id;
 
-	// public function __construct( $valor, $data_compra, $descricao, $tipo_pagamento_id, $categoria_id ) {
-	// 	$this->valor = $valor;
-	// 	$this->data_compra = $data_compra;
-	// 	$this->descricao = $descricao;
-	// 	$this->tipo_pagamento_id = $tipo_pagamento_id;
-	// 	$this->categoria_id = $categoria_id;
-	// }
-
 	public function getValor(){
 		return $this->valor;
 	}
@@ -76,8 +68,6 @@ class Expense extends Crud {
 	}
 	
 	public function find( $id ) {
-		// $sql  = "SELECT * FROM $this->table WHERE id = :id";
-		// $sql = "SELECT * FROM despesas AS despesa INNER JOIN tipo_pagamento AS tipo ON despesa.tipo_pagamento_id = tipo.id INNER JOIN categorias AS categoria ON despensa.categoria_id = categoria.id";
 		$sql = "SELECT despesa.id AS id_despesa, valor, data_compra, despesa.descricao AS descricao_despesa, tipo_pagamento_id, categoria_id, tipo.id AS id_tipo, tipo.tipo, categoria.id AS id_categoria, categoria.nome FROM despesas AS despesa JOIN tipo_pagamento AS tipo JOIN categorias AS categoria WHERE despesa.id = :id AND despesa.tipo_pagamento_id = tipo.id AND despesa.categoria_id = categoria.id";
 		$stmt = DB::prepare( $sql );
 		$stmt->bindParam( ':id', $id, PDO::PARAM_INT );
@@ -95,25 +85,7 @@ class Expense extends Crud {
 		$stmt->bindParam( ':categoria_id', $this->categoria_id );
 		$stmt->bindParam( ':id', $id );
 		return $stmt->execute();	
-	}
-
-	// public function recover(){
-	//     $sql  = "Select * from $this->table where email =:email AND senha = :senha";
-	// 	$stmt = DB::prepare($sql);
-	// 	$stmt->bindParam(':email', $this->email);
-	// 	$stmt->bindParam(':senha', $this->senha);
-	// 	$stmt->execute(); 
-	// 	return $stmt->fetchAll();
-	// }
-	
-	// public function resetPassword(){
-	//     $sql  = "UPDATE $this->table SET  senha = :senha WHERE id = :id";
-	//     $stmt = DB::prepare($sql);
-	//     $stmt->bindParam(':senha', $this->senha);
-	//     $stmt->bindParam(':id', $this->id);
-	//     return $stmt->execute();
-	// }
-	
+	}	
 }
 
 ?>
