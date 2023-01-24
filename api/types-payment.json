@@ -1,0 +1,14 @@
+[
+      {
+            "tipo": "Débito"
+      },
+      {
+            "tipo": "Crédito"
+      },
+      {
+            "tipo": "Pix"
+      },
+      {
+            "tipo": "Dinheiro"
+      }
+]
