@@ -1,0 +1,16 @@
+@import 'base/variables';
+@import 'base/normalize';
+
+//fontawesome
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+// bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+@import 'base/generics';
+@import 'components/components';
+@import 'utilities/utilities';
+@import 'layouts/layouts';

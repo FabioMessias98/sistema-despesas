@@ -1,0 +1,360 @@
+$utility-name: 'u-font-weight';
+
+.#{$utility-name} {
+	&-light {
+		font-weight: 300 !important;
+	}
+
+	&-regular {
+		font-weight: 400 !important;
+	}
+
+	&-medium {
+		font-weight: 500 !important;
+	}
+
+	&-semibold {
+		font-weight: 600 !important;
+	}
+
+	&-bold {
+		font-weight: 700 !important;
+	}
+
+	&-extrabold {
+		font-weight: 800 !important;
+	}
+
+	&-black {
+		font-weight: 900 !important;
+	}
+}
+
+//before
+.before\:\: {
+	&#{$utility-name} {
+		&-light {
+			&::before {
+				font-weight: 300 !important;
+			}
+		}
+	
+		&-regular {
+			&::before {
+				font-weight: 400 !important;
+			}
+		}
+	
+		&-medium {
+			&::before {
+				font-weight: 500 !important;
+			}
+		}
+	
+		&-semibold {
+			&::before {
+				font-weight: .6875rem !important;
+			}
+		}
+	
+		&-bold {
+			&::before {
+				font-weight: 700 !important;
+			}
+		}
+	
+		&-extrabold {
+			&::before {
+				font-weight: 800 !important;
+			}
+		}
+	
+		&-black {
+			&::before {
+				font-weight: 900 !important;
+			}
+		}
+	}    
+}
+
+//after
+.after\:\: {
+	&#{$utility-name} {    
+		&-light {
+			&::after {
+				font-weight: 300 !important;
+			}
+		}
+	
+		&-regular {
+			&::after {
+				font-weight: 400 !important;
+			}
+		}
+	
+		&-medium {
+			&::after {
+				font-weight: 500 !important;
+			}
+		}
+	
+		&-semibold {
+			&::after {
+				font-weight: .6875rem !important;
+			}
+		}
+	
+		&-bold {
+			&::after {
+				font-weight: 700 !important;
+			}
+		}
+	
+		&-extrabold {
+			&::after {
+				font-weight: 800 !important;
+			}
+		}
+	
+		&-black {
+			&::after {
+				font-weight: 900 !important;
+			}
+		}
+	}    
+}
+
+//query sm
+.sm\: {
+	&#{$utility-name} {    
+		&-light {
+			@media screen and (min-width: 576px) {
+				font-weight: 300 !important;
+			}
+		}
+	
+		&-regular {
+			@media screen and (min-width: 576px) {
+				font-weight: 400 !important;
+			}
+		}
+	
+		&-medium {
+			@media screen and (min-width: 576px) {
+				font-weight: 500 !important;
+			}
+		}
+	
+		&-semibold {
+			@media screen and (min-width: 576px) {
+				font-weight: .6875rem !important;
+			}
+		}
+	
+		&-bold {
+			@media screen and (min-width: 576px) {
+				font-weight: 700 !important;
+			}
+		}
+	
+		&-extrabold {
+			@media screen and (min-width: 576px) {
+				font-weight: 800 !important;
+			}
+		}
+	
+		&-black {
+			@media screen and (min-width: 576px) {
+				font-weight: 900 !important;
+			}
+		}
+	}    
+}
+
+//query md
+.md\: {
+	&#{$utility-name} {    
+		&-light {
+			@media screen and (min-width: 768px) {
+				font-weight: 300 !important;
+			}
+		}
+	
+		&-regular {
+			@media screen and (min-width: 768px) {
+				font-weight: 400 !important;
+			}
+		}
+	
+		&-medium {
+			@media screen and (min-width: 768px) {
+				font-weight: 500 !important;
+			}
+		}
+	
+		&-semibold {
+			@media screen and (min-width: 768px) {
+				font-weight: .6875rem !important;
+			}
+		}
+	
+		&-bold {
+			@media screen and (min-width: 768px) {
+				font-weight: 700 !important;
+			}
+		}
+	
+		&-extrabold {
+			@media screen and (min-width: 768px) {
+				font-weight: 800 !important;
+			}
+		}
+	
+		&-black {
+			@media screen and (min-width: 768px) {
+				font-weight: 900 !important;
+			}
+		}
+	}    
+}
+
+//query lg
+.lg\: {
+	&#{$utility-name} {    
+		&-light {
+			@media screen and (min-width: 992px) {
+				font-weight: 300 !important;
+			}
+		}
+	
+		&-regular {
+			@media screen and (min-width: 992px) {
+				font-weight: 400 !important;
+			}
+		}
+	
+		&-medium {
+			@media screen and (min-width: 992px) {
+				font-weight: 500 !important;
+			}
+		}
+	
+		&-semibold {
+			@media screen and (min-width: 992px) {
+				font-weight: .6875rem !important;
+			}
+		}
+	
+		&-bold {
+			@media screen and (min-width: 992px) {
+				font-weight: 700 !important;
+			}
+		}
+	
+		&-extrabold {
+			@media screen and (min-width: 992px) {
+				font-weight: 800 !important;
+			}
+		}
+	
+		&-black {
+			@media screen and (min-width: 992px) {
+				font-weight: 900 !important;
+			}
+		}
+	}    
+}
+
+//query xl
+.xl\: {
+	&#{$utility-name} {
+		&-light {
+			@media screen and (min-width: 1200px) {
+				font-weight: 300 !important;
+			}
+		}
+	
+		&-regular {
+			@media screen and (min-width: 1200px) {
+				font-weight: 400 !important;
+			}
+		}
+	
+		&-medium {
+			@media screen and (min-width: 1200px) {
+				font-weight: 500 !important;
+			}
+		}
+	
+		&-semibold {
+			@media screen and (min-width: 1200px) {
+				font-weight: .6875rem !important;
+			}
+		}
+	
+		&-bold {
+			@media screen and (min-width: 1200px) {
+				font-weight: 700 !important;
+			}
+		}
+	
+		&-extrabold {
+			@media screen and (min-width: 1200px) {
+				font-weight: 800 !important;
+			}
+		}
+	
+		&-black {
+			@media screen and (min-width: 1200px) {
+				font-weight: 900 !important;
+			}
+		}
+	}    
+}
+
+//query xxl
+.xxl\: {
+	&#{$utility-name} {
+		&-light {
+			@media screen and (min-width: 1600px) {
+				font-weight: 300 !important;
+			}
+		}
+	
+		&-regular {
+			@media screen and (min-width: 1600px) {
+				font-weight: 400 !important;
+			}
+		}
+	
+		&-medium {
+			@media screen and (min-width: 1600px) {
+				font-weight: 500 !important;
+			}
+		}
+	
+		&-semibold {
+			@media screen and (min-width: 1600px) {
+				font-weight: .6875rem !important;
+			}
+		}
+	
+		&-bold {
+			@media screen and (min-width: 1600px) {
+				font-weight: 700 !important;
+			}
+		}
+	
+		&-extrabold {
+			@media screen and (min-width: 1600px) {
+				font-weight: 800 !important;
+			}
+		}
+	
+		&-black {
+			@media screen and (min-width: 1600px) {
+				font-weight: 900 !important;
+			}
+		}
+	}    
+}

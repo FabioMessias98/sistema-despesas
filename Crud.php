@@ -17,7 +17,7 @@ abstract class Crud extends DB {
 	// 	return $stmt->fetchAll();
 	// }
 
-	public function findAll() {
+	public function store() {
 		$sql  = "SELECT * FROM $this->table";
 		$stmt = DB::prepare( $sql );
 		$stmt->execute();

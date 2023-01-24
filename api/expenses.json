@@ -4,20 +4,20 @@
             "data_compra": "2023-01-01",
             "descricao": "Lorem ipsum...",
             "tipo_pagamento_id": 1,
-            "categoria_id": 1
+            "categoria_id": 8
       },
       {
             "valor": "250.00",
             "data_compra": "2023-02-01",
             "descricao": "Lorem ipsum...",
-            "tipo_pagamento_id": 2,
-            "categoria_id": 6
+            "tipo_pagamento_id": 1,
+            "categoria_id": 8
       },
       {
             "valor": "300.00",
             "data_compra": "2023-03-01",
             "descricao": "Lorem ipsum...",
-            "tipo_pagamento_id": 3,
-            "categoria_id": 3
+            "tipo_pagamento_id": 4,
+            "categoria_id": 9
       }
 ]

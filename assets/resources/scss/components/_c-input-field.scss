@@ -1,0 +1,16 @@
+$component-name: 'c-input-field';
+
+.#{$component-name} {
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border: 1px solid #707070;
+    border-radius: 8px;
+    outline: 0;
+
+    &__cash {
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        position: absolute;
+    }
+}

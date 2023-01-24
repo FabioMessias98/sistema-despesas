@@ -1,0 +1,90 @@
+<?php 
+    include( '../../Expense.php' );   
+    require '../../vendor/autoload.php';  
+
+    $html = "<!DOCTYPE html>";
+    $html .= "<html lang='en'>";
+    $html .= "<head>";
+    $html .= "<meta charset='UTF-8'>";
+    $html .= "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
+    $html .= "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+    $html .= "<title>Document</title>";
+    $html .= "</head>";
+    $html .= "<body>";
+    $html .= "<h1 style='text-align:center'>";
+    $html .= "Despesa do mês de Janeiro";
+    $html .= "</h1>";
+    $html .= "<div>";
+    $html .= "<div style='width:20%;display:inline-block'>";
+    $html .= "<p style='font-weight:700;text-align:center'>";
+    $html .= "ID";
+    $html .= "</p>";
+    $html .= "</div>";
+    $html .= "<div style='width:20%;display:inline-block'>";
+    $html .= "<p style='font-weight:700;text-align:center'>";
+    $html .= "Data de compra";
+    $html .= "</p>";
+    $html .= "</div>";
+    $html .= "<div style='width:20%;display:inline-block'>";
+    $html .= "<p style='font-weight:700;text-align:center'>";
+    $html .= "Descrição";
+    $html .= "</p>";
+    $html .= "</div>";
+    $html .= "<div style='width:20%;display:inline-block'>";
+    $html .= "<p style='font-weight:700;text-align:center'>";
+    $html .= "Tipo de pagamento";
+    $html .= "</p>";
+    $html .= "</div>";
+    $html .= "<div style='width:20%;display:inline-block'>";
+    $html .= "<p style='font-weight:700;text-align:center'>";
+    $html .= "Categoria";
+    $html .= "</p>";
+    $html .= "</div>";
+    $html .= "</div>";
+    $html .= "<div>";
+
+    $expenses = new Expense();
+                                    
+    foreach( $expenses->store() as $expense ) :
+        list($data_day, $data_month, $data_year) = explode('-', $expense->data_compra);    
+        if( $data_month == date( 'm' ) ) :         
+            $html .= "<div>";
+            $html .= "<div style='width:20%;display:inline-block'>";
+            $html .= "<p style='text-align:center'>";
+            $html .= $expense->valor;
+            $html .= "</p>";
+            $html .= "</div>";
+            $html .= "<div style='width:20%;display:inline-block'>";
+            $html .= "<p style='text-align:center'>";
+            $html .= $expense->data_compra;
+            $html .= "</p>";
+            $html .= "</div>";
+            $html .= "<div style='width:20%;display:inline-block'>";
+            $html .= "<p style='text-align:center'>";
+            $html .= $expense->descricao_despesa;
+            $html .= "</p>";
+            $html .= "</div>";
+            $html .= "<div style='width:20%;display:inline-block'>";
+            $html .= "<p style='text-align:center'>";
+            $html .= $expense->tipo;
+            $html .= "</p>";
+            $html .= "</div>";
+            $html .= "<div style='width:20%;display:inline-block'>";
+            $html .= "<p style='text-align:center'>";
+            $html .= $expense->nome;
+            $html .= "</p>";
+            $html .= "</div>";
+            $html .= "</div>";
+        endif;  
+    endforeach; 
+
+    $html .= "</div>";
+    $html .= "</body>";
+    $html .= "</html>";
+
+    use Dompdf\Dompdf;
+    $dompdf = new Dompdf( ['enable_remote' => true] );
+    $dompdf->loadHtml( $html );       
+    $dompdf->setPaper( 'A4', 'portrait' );
+    $dompdf->render();
+    $dompdf->stream();

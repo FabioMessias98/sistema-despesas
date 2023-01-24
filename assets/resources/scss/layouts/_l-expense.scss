@@ -1,0 +1,111 @@
+$layout-name: 'l-expense';
+
+.#{$layout-name} {
+    &__report {
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        border-radius: 8px;
+        position: relative;
+        display: block;
+        font-size: .875rem;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none !important;
+        color: $color-folk-white !important;
+        background-color: $color-folk-primary;
+
+        &:hover {
+            background-color: $color-folk-secondary;
+        }
+
+        &__item {
+            width: 100%;
+            top: 70%;
+            left: 0;
+            transition: all .4s;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            background-color: $color-folk-secondary;
+
+            &__link {
+                width: 50%;
+                display: block;
+                text-decoration: none !important;
+                color: $color-folk-white !important;
+                background-color: $color-folk-primary;
+
+                &:nth-of-type(odd) {
+                    background-color: $color-folk-primary;
+                }
+
+                &:nth-of-type(even) {
+                    background-color: $color-folk-secondary;
+                }
+
+                &:hover {
+                    opacity: .8;
+                }
+            }
+        }
+        
+        &:hover {
+            .#{$layout-name} {
+                &__report {
+                    &__item {
+                        top: calc(100% + .5rem);
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+    }
+
+    &__box {
+        height: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        border-radius: 8px;
+
+        &__action {
+            height: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+            border-radius: 8px;
+            display: block;
+            font-size: 0;
+            text-decoration: none !important;
+
+            &:hover {
+                background-color: $color-folk-primary;
+
+                &::before {
+                    color: $color-folk-secondary;
+                }
+            }
+
+            &::before {
+                font-size: 1rem;
+                font-weight: 700;
+                font-family: 'Font Awesome 5 Free';
+                color: $color-folk-primary;
+            }
+
+            &--edit {
+                &::before {
+                    content: '\f044';
+                }
+            }
+
+            &--remove {
+                &::before {
+                    content: '\f2ed';
+                }
+            }
+        }
+    }
+}

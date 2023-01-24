@@ -1,0 +1,19 @@
+$component-name: 'c-button-submit';
+
+.#{$component-name} {
+    width: 100%;
+    transition: all .2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border: 0;
+    border-radius: 8px;
+    outline: 0;
+    display: block;
+    font-weight: 700;
+    color: $color-folk-secondary;
+    background-color: $color-folk-primary;
+
+    &:hover {
+        color: $color-folk-primary;
+        background-color: $color-folk-secondary;
+    }
+}

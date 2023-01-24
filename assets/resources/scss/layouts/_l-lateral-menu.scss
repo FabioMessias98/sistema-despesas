@@ -1,0 +1,57 @@
+$layout-name: 'l-lateral-menu';
+
+.#{$layout-name} {
+    height: calc(100vh - 2rem);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-radius: 8px;
+    background-color: $color-folk-primary;
+
+    &__item {
+        margin-bottom: .5rem;
+        
+        list-style: none;
+    }
+
+    &__link {
+        padding: .5rem 2rem;
+        transition: all .2s;
+        border-radius: 8px;
+        position: relative;
+        display: block;
+        font-weight: 700;
+        text-decoration: none !important;
+        color: $color-folk-white;
+
+        &--expenses {
+            &::before {
+                content: '\f466';
+            }
+        }
+
+        &--categories {
+            &::before {
+                content: '\f022';
+            }
+        }
+
+        &--types-payment {
+            &::before {
+                content: '\f09d';
+            }
+        }
+
+        &::before {
+            top: 50%;
+            transform: translateY(-50%);
+            left: .5rem;
+            position: absolute;
+            font-weight: 700;
+            font-family: 'Font Awesome 5 Free';
+        }
+
+        &:hover {
+            color: $color-folk-primary;
+            background-color: $color-folk-white;
+        }
+    }
+}

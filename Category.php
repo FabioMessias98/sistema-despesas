@@ -47,7 +47,7 @@ class Category extends Crud {
 		return $stmt->fetchAll();
 	}
 	
-	public function update($id){
+	public function update( $id ) {
 		$sql  = "UPDATE $this->table SET nome = :nome, descricao = :descricao WHERE id = :id";
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':nome', $this->nome);
