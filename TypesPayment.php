@@ -38,31 +38,13 @@
 			return $stmt->fetchAll();
 		}
 		
-		public function update($id){
+		public function update( $id ){
 			$sql  = "UPDATE $this->table SET tipo = :tipo WHERE id = :id";
 			$stmt = DB::prepare($sql);
 			$stmt->bindParam(':tipo', $this->tipo);
 			$stmt->bindParam(':id', $id);
 			return $stmt->execute();	
 		}
-
-		// public function recover(){
-		//     $sql  = "Select * from $this->table where email =:email AND senha = :senha";
-		// 	$stmt = DB::prepare($sql);
-		// 	$stmt->bindParam(':email', $this->email);
-		// 	$stmt->bindParam(':senha', $this->senha);
-		// 	$stmt->execute(); 
-		// 	return $stmt->fetchAll();
-		// }
-		
-		// public function resetPassword(){
-		//     $sql  = "UPDATE $this->table SET  senha = :senha WHERE id = :id";
-		//     $stmt = DB::prepare($sql);
-		//     $stmt->bindParam(':senha', $this->senha);
-		//     $stmt->bindParam(':id', $this->id);
-		//     return $stmt->execute();
-		// }
-		
 	}
 
 ?>
