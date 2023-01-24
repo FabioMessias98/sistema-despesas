@@ -1,0 +1,18 @@
+[
+      {
+            "nome": "Alimento",
+            "descricao": "Descrição Alimento"
+      },
+      {
+            "nome": "Bebida",
+            "descricao": "Descrição bebida"
+      },
+      {
+            "nome": "Conta de água",
+            "descricao": "Descrição conta de água"
+      },
+      {
+            "nome": "Conta de luz",
+            "descricao": "Descrição conta de luz"
+      }
+]
